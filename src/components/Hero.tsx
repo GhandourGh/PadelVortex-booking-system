@@ -1,11 +1,24 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, MapPin } from "lucide-react";
 
 export default function Hero() {
   return (
     <section id="hero" className="relative isolate overflow-hidden">
-      {/* Background image */}
-      <div aria-hidden="true" className="absolute inset-0 bg-[url('/vpadel.webp')] bg-cover bg-center " />
+      {/* Background image - optimized with Next.js Image */}
+      <div aria-hidden="true" className="absolute inset-0">
+        <Image
+          src="/vpadel.webp"
+          alt="Vortex Padel court background"
+          fill
+          priority
+          quality={85}
+          sizes="100vw"
+          className="object-cover object-center"
+          placeholder="blur"
+          blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
+        />
+      </div>
 
       {/* Cinematic overlays: vertical gradient + vignette */}
       <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/35 to-black/40" />
@@ -22,7 +35,7 @@ export default function Hero() {
 
           {/* Value proposition (not the brand name) */}
           <h1 className=" text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight text-white leading-[1.08]">
-            Lebanon’s Premium Padel Club
+            Lebanon's Premium Padel Club
           </h1>
 
           <p className="mt-4 text-base md:text-lg text-white/85 leading-relaxed">

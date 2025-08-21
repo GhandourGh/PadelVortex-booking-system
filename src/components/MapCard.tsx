@@ -17,6 +17,7 @@ export default function MapCard({
   label = "Open in Google Maps",
 }: MapCardProps) {
   const [loaded, setLoaded] = useState(false);
+  const [error, setError] = useState(false);
 
   return (
     <section aria-labelledby="location-heading" className="mt-6">
@@ -33,11 +34,21 @@ export default function MapCard({
         className="group block relative aspect-[16/13] w-full overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 shadow-sm transition hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
       >
         {/* Skeleton while image loads */}
-        {!loaded && (
+        {!loaded && !error && (
           <div
             aria-hidden
             className="absolute inset-0 animate-pulse bg-gradient-to-br from-slate-100 to-slate-200"
           />
+        )}
+
+        {/* Error fallback */}
+        {error && (
+          <div className="absolute inset-0 flex items-center justify-center bg-slate-100">
+            <div className="text-center text-slate-500">
+              <MapPin className="mx-auto h-8 w-8 mb-2" />
+              <p className="text-sm">Map preview unavailable</p>
+            </div>
+          </div>
         )}
 
         <Image
@@ -45,9 +56,15 @@ export default function MapCard({
           alt={alt}
           fill
           sizes="(max-width: 768px) 100vw, 900px"
-          priority
+          priority={false}
+          quality={85}
           onLoad={() => setLoaded(true)}
-          className="object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+          onError={() => setError(true)}
+          className={`object-cover transition-transform duration-300 group-hover:scale-[1.02] ${
+            loaded ? 'opacity-100' : 'opacity-0'
+          }`}
+          placeholder="blur"
+          blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
         />
 
         {/* Soft overlay for readability */}
