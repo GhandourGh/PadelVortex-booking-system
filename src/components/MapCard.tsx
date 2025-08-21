@@ -15,7 +15,6 @@ export default function MapCard({
   alt = "Vortex Padel location map",
   label = "Open in Google Maps",
 }: MapCardProps) {
-  const [loaded, setLoaded] = useState(false);
   const [error, setError] = useState(false);
 
   return (
@@ -32,14 +31,6 @@ export default function MapCard({
         aria-label={label}
         className="group block relative aspect-[16/13] w-full overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 shadow-sm transition hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
       >
-        {/* Skeleton while image loads */}
-        {!loaded && !error && (
-          <div
-            aria-hidden
-            className="absolute inset-0 animate-pulse bg-gradient-to-br from-slate-100 to-slate-200"
-          />
-        )}
-
         {/* Error fallback */}
         {error && (
           <div className="absolute inset-0 flex items-center justify-center bg-slate-100">
@@ -53,10 +44,7 @@ export default function MapCard({
         <img
           src={imgSrc}
           alt={alt}
-          className={`absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.02] ${
-            loaded ? 'opacity-100' : 'opacity-0'
-          }`}
-          onLoad={() => setLoaded(true)}
+          className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
           onError={() => setError(true)}
         />
 
