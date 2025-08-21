@@ -55,14 +55,11 @@ export default function MapCard({
           src={imgSrc}
           alt={alt}
           fill
-          sizes="(max-width: 768px) 100vw, 900px"
-          priority={false}
-          quality={85}
-          onLoad={() => setLoaded(true)}
-          onError={() => setError(true)}
           className={`object-cover transition-transform duration-300 group-hover:scale-[1.02] ${
             loaded ? 'opacity-100' : 'opacity-0'
           }`}
+          onLoad={() => setLoaded(true)}
+          onError={() => setError(true)}
         />
 
         {/* Soft overlay for readability */}

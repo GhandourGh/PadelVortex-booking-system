@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Instagram, MapPin, Phone } from "lucide-react";
 
 export default function Footer() {
@@ -8,11 +9,13 @@ export default function Footer() {
         
         {/* Brand */}
         <div className="flex flex-col items-center text-center md:items-start md:text-left">
-          <img
+          <Image
             src="/logo.svg"
             alt="Vortex Padel Logo"
+            width={128}
+            height={128}
             className="h-16 md:h-24 lg:h-32 w-auto object-contain mb-4"
-            loading="lazy"
+            priority={false}
           />
           <p className="mt-2 text-base leading-relaxed text-slate-400 max-w-lg">
             Energetic padel club with two premium courts. Book your next match and experience the vibe.

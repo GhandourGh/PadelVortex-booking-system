@@ -17,24 +17,6 @@ const nextConfig: NextConfig = {
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
-  // Performance optimizations
-  experimental: {
-    optimizePackageImports: ['lucide-react'],
-  },
-  // Headers for caching
-  async headers() {
-    return [
-      {
-        source: '/:all*(svg|jpg|jpeg|png|webp|avif)',
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable',
-          },
-        ],
-      },
-    ];
-  },
 };
 
 export default nextConfig;

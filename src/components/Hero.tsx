@@ -5,15 +5,13 @@ import { ArrowRight, MapPin } from "lucide-react";
 export default function Hero() {
   return (
     <section id="hero" className="relative isolate overflow-hidden">
-      {/* Background image - optimized with Next.js Image */}
+      {/* Background image - simplified approach */}
       <div aria-hidden="true" className="absolute inset-0">
         <Image
           src="/vpadel.webp"
           alt="Vortex Padel court background"
           fill
           priority
-          quality={85}
-          sizes="100vw"
           className="object-cover object-center"
         />
       </div>
