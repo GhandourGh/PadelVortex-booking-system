@@ -36,7 +36,7 @@ export default function Navbar() {
   // handle link click to set active state
   const handleLinkClick = (href: string) => {
     setActiveLink(href);
-    setOpen(false); // Close mobile menu
+    setOpen(false); // Close menu
   };
 
   // close on route change (defensive)
@@ -68,56 +68,22 @@ export default function Navbar() {
           </Link>
         </div>
 
-        {/* Desktop nav */}
-        <div className="hidden lg:flex items-center justify-center gap-4 flex-1">
-          {nav.map((item) => {
-            const Icon = item.icon;
-            const active = isActive(item.href);
-            return (
-              <Link
-                key={item.href}
-                href={item.href}
-                onClick={() => handleLinkClick(item.href)}
-                className={[
-                  "inline-flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium",
-                  "text-white/90 hover:bg-white/10 transition",
-                  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 focus-visible:ring-offset-0",
-                  active ? "bg-primary/20 text-primary" : "",
-                ].join(" ")}
-              >
-                <Icon className="h-4 w-4" />
-                {item.label}
-              </Link>
-            );
-          })}
-        </div>
-
-        {/* CTA Button */}
-        <div className="hidden lg:block">
-          <Link
-            href="/booking"
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-md text-sm font-semibold bg-primary text-white hover:bg-primary/90 transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30"
-          >
-            Book Now <ArrowRight className="h-4 w-4" />
-          </Link>
-        </div>
-
-        {/* Mobile menu button */}
+        {/* Menu button (right) - same for desktop and mobile */}
         <button
           onClick={() => setOpen((v) => !v)}
           aria-label="Toggle Menu"
           aria-expanded={open}
-          className="lg:hidden inline-flex h-10 w-10 items-center justify-center rounded-md border border-primary text-primary hover:bg-primary/10 transition"
+          className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-primary text-primary hover:bg-primary/10 transition"
         >
           {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
       </nav>
 
-      {/* Mobile dropdown — ALWAYS WHITE */}
+      {/* Dropdown menu — same style for desktop and mobile */}
       <div
         className={[
           open ? "pointer-events-auto opacity-100 scale-y-100" : "pointer-events-none opacity-0 scale-y-95",
-          "absolute left-0 right-0 top-full z-50 w-full bg-white border-t border-black/5 shadow-lg origin-top transform transition-all duration-300 lg:hidden",
+          "absolute left-0 right-0 top-full z-50 w-full bg-white border-t border-black/5 shadow-lg origin-top transform transition-all duration-300",
         ].join(" ")}
         role="dialog"
         aria-hidden={!open}
