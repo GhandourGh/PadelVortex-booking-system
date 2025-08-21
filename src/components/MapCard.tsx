@@ -1,6 +1,5 @@
 "use client";
 import { useState } from "react";
-import Image from "next/image";
 import { MapPin, ExternalLink } from "lucide-react";
 
 type MapCardProps = {
@@ -51,11 +50,10 @@ export default function MapCard({
           </div>
         )}
 
-        <Image
+        <img
           src={imgSrc}
           alt={alt}
-          fill
-          className={`object-cover transition-transform duration-300 group-hover:scale-[1.02] ${
+          className={`absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.02] ${
             loaded ? 'opacity-100' : 'opacity-0'
           }`}
           onLoad={() => setLoaded(true)}

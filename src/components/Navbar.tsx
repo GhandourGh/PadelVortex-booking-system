@@ -1,6 +1,5 @@
 "use client";
 import Link from "next/link";
-import Image from "next/image";
 import { usePathname } from "next/navigation";
 import {
   Phone,
@@ -61,13 +60,10 @@ export default function Navbar() {
         {/* Logo (center) */}
         <div className="flex-1 flex justify-center">
           <Link href="/" className="flex items-center">
-            <Image
+            <img
               src="/logo.svg"
               alt="Vortex Padel"
-              width={150}
-              height={150}
               className="h-14 w-auto"
-              priority
             />
           </Link>
         </div>

@@ -1,18 +1,15 @@
 import Link from "next/link";
-import Image from "next/image";
 import { ArrowRight, MapPin } from "lucide-react";
 
 export default function Hero() {
   return (
     <section id="hero" className="relative isolate overflow-hidden">
-      {/* Background image - simplified approach */}
+      {/* Background image - using regular img tag to avoid 400 errors */}
       <div aria-hidden="true" className="absolute inset-0">
-        <Image
+        <img
           src="/vpadel.webp"
           alt="Vortex Padel court background"
-          fill
-          priority
-          className="object-cover object-center"
+          className="w-full h-full object-cover object-center"
         />
       </div>
 
