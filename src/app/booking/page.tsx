@@ -810,21 +810,18 @@ export default function BookingPage() {
               {submitError && (
                 <p className="text-red-500 text-sm text-center mb-2">{submitError}</p>
               )}
-              {!isPhoneValid(phone) && (
-                <p className="text-red-500 text-xs text-center mb-2">Phone must include +961 and at least 8 digits</p>
-              )}
+
               {(!startTime) && (
                 <p className="text-red-500 text-sm text-center mb-2">Please select a time slot before confirming.</p>
               )}
               <button
                 onClick={() => {
                   if (name.trim().length === 0) { setSubmitError("Please enter your name"); return; }
-                  if (!isPhoneValid(phone)) { setSubmitError("Please enter a valid phone (+961 + at least 8 digits)"); return; }
                   setSubmitError(null); setShowModal(true);
                 }}
-                disabled={!startTime || name.trim().length === 0 || !isPhoneValid(phone) || loadingAvailability}
+                disabled={!startTime || name.trim().length === 0 || loadingAvailability}
                 className={`rounded-full px-5 py-2.5 text-sm font-semibold shadow-sm transition ${
-                  !startTime || name.trim().length === 0 || !isPhoneValid(phone) || loadingAvailability
+                  !startTime || name.trim().length === 0 || loadingAvailability
                     ? "bg-slate-200 text-slate-500 cursor-not-allowed"
                     : "bg-primary text-white hover:opacity-95"
                 }`}
